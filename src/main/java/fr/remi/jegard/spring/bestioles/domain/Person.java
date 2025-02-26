@@ -25,7 +25,7 @@ public class Person {
     private String mdp;
 
     @Column(name = "active")
-    private Short active;
+    private Byte active;
 
 
     public Person() {
@@ -79,11 +79,13 @@ public class Person {
         this.mdp = mdp;
     }
 
-    public Short getActive() {
+    public Byte getActive() {
         return active;
     }
 
-    public void setActive(Short active) {
+    public void setActive(Byte active) {
         this.active = active;
     }
+
+
 }
