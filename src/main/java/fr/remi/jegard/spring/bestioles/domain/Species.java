@@ -42,4 +42,13 @@ public class Species {
     public void setLatinName(String latinName) {
         this.latinName = latinName;
     }
+
+    @Override
+    public String toString() {
+        return "Species{" +
+                "id=" + id +
+                ", commonName='" + commonName + '\'' +
+                ", latinName='" + latinName + '\'' +
+                '}';
+    }
 }
