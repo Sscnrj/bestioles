@@ -1,14 +1,15 @@
 package fr.remi.jegard.spring.bestioles.domain;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "animal")
 public class Animal implements Serializable {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -21,8 +22,12 @@ public class Animal implements Serializable {
     @Column(name = "sex")
     private String sex;
 
-    @Column(name = "species_id")
-    private Integer speciesId;
+    @ManyToOne
+    @JoinColumn(name = "species_id")
+    private Species species;
+
+    @ManyToMany(mappedBy = "animals")
+    private List<Person> persons;
 
     public Animal() {
     }
@@ -59,11 +64,19 @@ public class Animal implements Serializable {
         this.sex = sex;
     }
 
-    public Integer getSpeciesId() {
-        return speciesId;
+    public Species getSpecies() {
+        return species;
     }
 
-    public void setSpeciesId(Integer speciesId) {
-        this.speciesId = speciesId;
+    public void setSpecies(Species species) {
+        this.species = species;
+    }
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
     }
 }
